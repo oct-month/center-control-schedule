@@ -1,22 +1,22 @@
 set NAMES 'utf8mb4';
 
-USE ccs;
+-- USE ccs;
 
-DROP TABLE IF EXISTS `Soft`;
-DROP TABLE IF EXISTS `DeviceReportLog`;
-DROP TABLE IF EXISTS `Device`;
-DROP TABLE IF EXISTS `ResourceTagRelate`;
-DROP TABLE IF EXISTS `CollectionTagRelate`;
-DROP TABLE IF EXISTS `ResourceCollectionRelate`;
-DROP TABLE IF EXISTS `ResourceThemeRelate`;
-DROP TABLE IF EXISTS `ResourceUserRelate`;
-DROP TABLE IF EXISTS `UserCollectionRelate`;
-DROP TABLE IF EXISTS `Resource`;
-DROP TABLE IF EXISTS `Collection`;
-DROP TABLE IF EXISTS `Theme`;
-DROP TABLE IF EXISTS `User`;
+-- DROP TABLE IF EXISTS `Soft`;
+-- DROP TABLE IF EXISTS `DeviceReportLog`;
+-- DROP TABLE IF EXISTS `Device`;
+-- DROP TABLE IF EXISTS `ResourceTagRelate`;
+-- DROP TABLE IF EXISTS `CollectionTagRelate`;
+-- DROP TABLE IF EXISTS `ResourceCollectionRelate`;
+-- DROP TABLE IF EXISTS `ResourceThemeRelate`;
+-- DROP TABLE IF EXISTS `ResourceUserRelate`;
+-- DROP TABLE IF EXISTS `UserCollectionRelate`;
+-- DROP TABLE IF EXISTS `Resource`;
+-- DROP TABLE IF EXISTS `Collection`;
+-- DROP TABLE IF EXISTS `Theme`;
+-- DROP TABLE IF EXISTS `User`;
 
-CREATE TABLE `Soft` (
+CREATE TABLE IF NOT EXISTS `Soft` (
   `id` char(64) NOT NULL COMMENT 'id',
   `version` varchar(20) NOT NULL COMMENT '版本号',
   `versionCode` int NOT NULL COMMENT '版本代码',
@@ -31,7 +31,7 @@ DEFAULT CHARSET=utf8mb4
 COLLATE=utf8mb4_general_ci
 COMMENT='固件';
 
-CREATE TABLE `Device` (
+CREATE TABLE IF NOT EXISTS `Device` (
   `id` char(64) NOT NULL COMMENT 'id',
   `softId` char(64) NOT NULL COMMENT '固件id',
   `time` datetime NOT NULL COMMENT '汇报时间',
@@ -46,7 +46,7 @@ DEFAULT CHARSET=utf8mb4
 COLLATE=utf8mb4_general_ci
 COMMENT='边缘设备';
 
-CREATE TABLE `DeviceReportLog` (
+CREATE TABLE IF NOT EXISTS `DeviceReportLog` (
   `id` int unsigned auto_increment NOT NULL COMMENT 'id',
   `deviceId` char(64) NOT NULL COMMENT '设备id',
   `softId` char(64) NOT NULL COMMENT '固件id',
@@ -65,7 +65,7 @@ COMMENT='边缘设备汇报日志';
 
 -- Device 表定时从 DeviceReportLog 表中同步信息
 
-CREATE TABLE `Resource` (
+CREATE TABLE IF NOT EXISTS `Resource` (
   `id` char(64) NOT NULL COMMENT 'id',
   `name` varchar(40) NOT NULL COMMENT '名称',
   `cover` varchar(100) NULL COMMENT '封面图',
@@ -80,7 +80,7 @@ DEFAULT CHARSET=utf8mb4
 COLLATE=utf8mb4_general_ci
 COMMENT='资源列表';
 
-CREATE TABLE `ResourceTagRelate` (
+CREATE TABLE IF NOT EXISTS `ResourceTagRelate` (
   `resourceId` char(64) NOT NULL,
   `tag` varchar(40) NOT NULL,
   PRIMARY KEY (`resourceId`, `tag`),
@@ -91,7 +91,7 @@ DEFAULT CHARSET=utf8mb4
 COLLATE=utf8mb4_general_ci
 COMMENT='资源-标签 关系表';
 
-CREATE TABLE `Collection` (
+CREATE TABLE IF NOT EXISTS `Collection` (
   `id` char(64) NOT NULL COMMENT 'id',
   `name` varchar(40) NOT NULL COMMENT '名称',
   `cover` varchar(100) NULL COMMENT '封面图',
@@ -102,7 +102,7 @@ DEFAULT CHARSET=utf8mb4
 COLLATE=utf8mb4_general_ci
 COMMENT='合集';
 
-CREATE TABLE `CollectionTagRelate` (
+CREATE TABLE IF NOT EXISTS `CollectionTagRelate` (
   `collectionId` char(64) NOT NULL,
   `tag` varchar(40) NOT NULL,
   PRIMARY KEY (`collectionId`, `tag`),
@@ -113,7 +113,7 @@ DEFAULT CHARSET=utf8mb4
 COLLATE=utf8mb4_general_ci
 COMMENT='合集-标签 关系表';
 
-CREATE TABLE `ResourceCollectionRelate` (
+CREATE TABLE IF NOT EXISTS `ResourceCollectionRelate` (
   `resourceId` char(64) NOT NULL,
   `collectionId` char(64) NOT NULL,
   PRIMARY KEY (`resourceId`, `collectionId`),
@@ -125,7 +125,7 @@ DEFAULT CHARSET=utf8mb4
 COLLATE=utf8mb4_general_ci
 COMMENT='资源-合集 关系表';
 
-CREATE TABLE `Theme` (
+CREATE TABLE IF NOT EXISTS `Theme` (
   `id` char(64) NOT NULL COMMENT 'id',
   `name` varchar(40) NOT NULL COMMENT '名称',
   `endTime` datetime NOT NULL COMMENT '结束时间',
@@ -136,7 +136,7 @@ DEFAULT CHARSET=utf8mb4
 COLLATE=utf8mb4_general_ci
 COMMENT='主题';
 
-CREATE TABLE `ResourceThemeRelate` (
+CREATE TABLE IF NOT EXISTS `ResourceThemeRelate` (
   `resourceId` char(64) NOT NULL,
   `themeId` char(64) NOT NULL,
   PRIMARY KEY (`resourceId`, `themeId`),
@@ -148,7 +148,7 @@ DEFAULT CHARSET=utf8mb4
 COLLATE=utf8mb4_general_ci
 COMMENT='资源-主题 关系表';
 
-CREATE TABLE `User` (
+CREATE TABLE IF NOT EXISTS `User` (
   `name` varchar(64) NOT NULL COMMENT '用户名',
   `role` varchar(40) NOT NULL COMMENT '角色/权限',
   `passwd` char(64) NOT NULL COMMENT 'SHA256密码',
@@ -159,7 +159,7 @@ DEFAULT CHARSET=utf8mb4
 COLLATE=utf8mb4_general_ci
 COMMENT='边缘用户';
 
-CREATE TABLE `ResourceUserRelate` (
+CREATE TABLE IF NOT EXISTS `ResourceUserRelate` (
   `resourceId` char(64) NOT NULL,
   `userName` varchar(64) NOT NULL,
   `flag` int NOT NULL,
@@ -172,7 +172,7 @@ DEFAULT CHARSET=utf8mb4
 COLLATE=utf8mb4_general_ci
 COMMENT='资源-用户 关系表';
 
-CREATE TABLE `UserCollectionRelate` (
+CREATE TABLE IF NOT EXISTS `UserCollectionRelate` (
   `userName` varchar(64) NOT NULL,
   `collectionId` char(64) NOT NULL,
   PRIMARY KEY (`userName`, `collectionId`),

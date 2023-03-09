@@ -1,7 +1,7 @@
 docker run -d \
     --rm \
     --name some-mysql \
-    -e MYSQL_ROOT_PASSWORD=my-secret-pw \
+    -e MYSQL_ROOT_PASSWORD=10101010 \
     -e MYSQL_DATABASE=ccs \
     -e TZ=Asia/Shanghai \
     -p 3306:3306 \
