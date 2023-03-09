@@ -572,7 +572,7 @@
 							"font": "Arial;13;0",
 							"left": 384,
 							"top": 32,
-							"width": 72,
+							"width": 72.00006103515625,
 							"height": 25,
 							"text": "边缘设备"
 						},
@@ -923,7 +923,7 @@
 							"font": "Arial;13;0",
 							"left": 192,
 							"top": 712,
-							"width": 124,
+							"width": 124.0001220703125,
 							"height": 40,
 							"text": "用户\n管理员、边缘盒子"
 						},
@@ -1283,7 +1283,7 @@
 							"font": "Arial;13;0",
 							"left": 400,
 							"top": 496,
-							"width": 72,
+							"width": 72.00006103515625,
 							"height": 25,
 							"text": "资源列表"
 						},
@@ -1761,7 +1761,7 @@
 											"top": 635,
 											"width": 126.26123046875,
 											"height": 13,
-											"text": "+resource: string[*]",
+											"text": "+/resource: string[*]",
 											"horizontalAlignment": 0
 										}
 									],
@@ -2862,9 +2862,9 @@
 										"$ref": "AAAAAAGFr1axoCnrnx4="
 									},
 									"font": "Arial;13;0",
-									"left": 485,
+									"left": 484,
 									"top": 264,
-									"width": 5.916015625,
+									"width": 6.5,
 									"height": 13,
 									"alpha": -0.46190477272977315,
 									"distance": 19.235384061671343,
@@ -3140,9 +3140,9 @@
 										"$ref": "AAAAAAGFr1qlw4RX6II="
 									},
 									"font": "Arial;13;0",
-									"left": 486,
+									"left": 485,
 									"top": 439,
-									"width": 5.916015625,
+									"width": 6.5,
 									"height": 13,
 									"alpha": -0.5235987755982988,
 									"distance": 25,
@@ -8457,9 +8457,9 @@
 										"$ref": "AAAAAAGFr4tt2OSwYjw="
 									},
 									"font": "Arial;13;0",
-									"left": 630,
+									"left": 629,
 									"top": 113,
-									"width": 5.916015625,
+									"width": 6.5,
 									"height": 13,
 									"alpha": -0.5235987755982988,
 									"distance": 25,
@@ -9037,9 +9037,9 @@
 										"$ref": "AAAAAAGFr5N2JV4npig="
 									},
 									"font": "Arial;13;0",
-									"left": 615,
+									"left": 614,
 									"top": 188,
-									"width": 5.916015625,
+									"width": 6.5,
 									"height": 13,
 									"alpha": -0.5235987755982988,
 									"distance": 25,
@@ -9929,7 +9929,8 @@
 							},
 							"name": "resource",
 							"type": "string",
-							"multiplicity": "*"
+							"multiplicity": "*",
+							"isDerived": true
 						}
 					]
 				},
@@ -10631,7 +10632,7 @@
 									"font": "Arial;13;0",
 									"left": 240,
 									"top": 160,
-									"width": 133.79833984375,
+									"width": 131.36083984375,
 									"height": 25,
 									"stereotypeLabel": {
 										"$ref": "AAAAAAGFv23tZCsjwqc="
@@ -10810,7 +10811,7 @@
 							"font": "Arial;13;0",
 							"left": 40,
 							"top": 104,
-							"width": 150,
+							"width": 150.00015258789062,
 							"height": 175,
 							"text": "MQTT命令\n（由中控发起）\n1、汇报位置\n2、汇报连接总览\n3、汇报连接日志\n4、汇报播放日志\n5、固件升级\n6、汇报自身状况\n（边缘设备应当定时执\n行这些命令，若中控发\n起指令则立即执行）"
 						},
@@ -10890,7 +10891,7 @@
 									"font": "Arial;13;0",
 									"left": 480,
 									"top": 168,
-									"width": 156.50390625,
+									"width": 155.208984375,
 									"height": 25,
 									"stereotypeLabel": {
 										"$ref": "AAAAAAGFv3dFpzKH590="
@@ -11052,7 +11053,7 @@
 							"font": "Arial;13;0",
 							"left": 200,
 							"top": 64,
-							"width": 163,
+							"width": 163.0001678466797,
 							"height": 70,
 							"text": "采用类似函数调用的形式\n ctime 发送时间\nfunctio 函数\nargs 函数参数"
 						},
@@ -11846,7 +11847,7 @@
 									"font": "Arial;13;0",
 									"left": 288,
 									"top": 319,
-									"width": 88,
+									"width": 88.00009155273438,
 									"height": 25,
 									"stereotypeLabel": {
 										"$ref": "AAAAAAGFv4dWQ4Yc5es="
@@ -11974,7 +11975,7 @@
 									"font": "Arial;13;0",
 									"left": 216,
 									"top": 560,
-									"width": 119.1162109375,
+									"width": 119.0908203125,
 									"height": 25,
 									"stereotypeLabel": {
 										"$ref": "AAAAAAGFv5QSH5+jU+U="
@@ -12787,7 +12788,7 @@
 									"font": "Arial;13;0",
 									"left": 360,
 									"top": 511,
-									"width": 88,
+									"width": 88.00009155273438,
 									"height": 25,
 									"stereotypeLabel": {
 										"$ref": "AAAAAAGFv5q/Dq8ha+s="

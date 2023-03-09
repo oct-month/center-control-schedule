@@ -17,18 +17,12 @@
     "latitude": "<纬度>",
     "clientCount": "<int:连接数>",
     "speedCount": "<float:总带宽MB/s>",
-    "soft": {
-        "<场景1>": "<版本>",
-        "<场景2>": "<版本>",
-        ...
-    },
+    "soft": "<softId>",
     "status": "online/updating/offline"
 }
 ```
 
 > `device/time`字段必须有，其它字段可以没有。若某字段没有，则中心会认为该字段的值与最近一次汇报相同。
-
-> `soft`字段通常只有一个值（即单一场景）
 
 
 ## 中心向边缘侧发布
@@ -117,11 +111,7 @@ POST /api/v1/register
     "code": "<邀请码>",
     "longitude": "<经度>",
     "latitude": "<纬度>",
-    "soft": {
-        "<场景1>": "<版本>",
-        "<场景2>": "<版本>",
-        ...
-    },
+    "soft": "<softId>",
     "status": "online/updating/offline"
 }
 ```
