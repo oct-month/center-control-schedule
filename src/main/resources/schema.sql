@@ -9,7 +9,8 @@ set NAMES 'utf8mb4';
 -- DROP TABLE IF EXISTS `CollectionTagRelate`;
 -- DROP TABLE IF EXISTS `ResourceCollectionRelate`;
 -- DROP TABLE IF EXISTS `ResourceThemeRelate`;
--- DROP TABLE IF EXISTS `ResourceUserRelate`;
+-- DROP TABLE IF EXISTS `UserResourceWhiteRelate`;
+-- DROP TABLE IF EXISTS `UserResourceBlackRelate`;
 -- DROP TABLE IF EXISTS `UserCollectionRelate`;
 -- DROP TABLE IF EXISTS `Resource`;
 -- DROP TABLE IF EXISTS `Collection`;
@@ -57,7 +58,7 @@ CREATE TABLE IF NOT EXISTS `DeviceReportLog` (
   `clientCount` int NULL COMMENT '连接数',
   `speedCount` float NULL COMMENT '总带宽',
   PRIMARY KEY (`id`),
-  CONSTRAINT `DRL_FK_1` FOREIGN KEY (`deviceId`) REFERENCES `Device` (`id`) ON DELETE CASCADE ON UPDATE CASCADE,
+  CONSTRAINT `DRL_FK_1` FOREIGN KEY (`deviceId`) REFERENCES `Device` (`id`) ON DELETE NO ACTION ON UPDATE CASCADE,
   CONSTRAINT `DRL_FK_2` FOREIGN KEY (`softId`) REFERENCES `Soft` (`id`) ON DELETE SET NULL ON UPDATE CASCADE
 )
 ENGINE=InnoDB
@@ -161,18 +162,29 @@ DEFAULT CHARSET=utf8mb4
 COLLATE=utf8mb4_general_ci
 COMMENT='边缘用户';
 
-CREATE TABLE IF NOT EXISTS `ResourceUserRelate` (
-  `resourceId` char(64) NOT NULL,
+CREATE TABLE IF NOT EXISTS `UserResourceWhiteRelate` (
   `userName` varchar(64) NOT NULL,
-  `flag` int NOT NULL,
-  PRIMARY KEY (`resourceId`, `userName`, `flag`),
-  CONSTRAINT `RUR_FK_1` FOREIGN KEY (`resourceId`) REFERENCES `Resource` (`id`) ON DELETE CASCADE ON UPDATE CASCADE,
-  CONSTRAINT `RUR_FK_2` FOREIGN KEY (`userName`) REFERENCES `User` (`name`) ON DELETE CASCADE ON UPDATE CASCADE
+  `resourceId` char(64) NOT NULL,
+  PRIMARY KEY (`userName`, `resourceId`),
+  CONSTRAINT `URWR_FK_1` FOREIGN KEY (`userName`) REFERENCES `User` (`name`) ON DELETE CASCADE ON UPDATE CASCADE,
+  CONSTRAINT `URWR_FK_2` FOREIGN KEY (`resourceId`) REFERENCES `Resource` (`id`) ON DELETE CASCADE ON UPDATE CASCADE
 )
 ENGINE=InnoDB
 DEFAULT CHARSET=utf8mb4
 COLLATE=utf8mb4_general_ci
-COMMENT='资源-用户 关系表';
+COMMENT='资源-用户 白名单 关系表';
+
+CREATE TABLE IF NOT EXISTS `UserResourceBlackRelate` (
+  `userName` varchar(64) NOT NULL,
+  `resourceId` char(64) NOT NULL,
+  PRIMARY KEY (`userName`, `resourceId`),
+  CONSTRAINT `URBR_FK_1` FOREIGN KEY (`userName`) REFERENCES `User` (`name`) ON DELETE CASCADE ON UPDATE CASCADE,
+  CONSTRAINT `URBR_FK_2` FOREIGN KEY (`resourceId`) REFERENCES `Resource` (`id`) ON DELETE NO ACTION ON UPDATE CASCADE
+)
+ENGINE=InnoDB
+DEFAULT CHARSET=utf8mb4
+COLLATE=utf8mb4_general_ci
+COMMENT='资源-用户 黑名单 关系表';
 
 CREATE TABLE IF NOT EXISTS `UserCollectionRelate` (
   `userName` varchar(64) NOT NULL,
