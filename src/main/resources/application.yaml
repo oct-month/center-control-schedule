@@ -17,6 +17,11 @@ spring:
     properties:
       hibernate:
         dialect: org.hibernate.dialect.MySQL8Dialect
+  rabbitmq:
+    host: 127.0.0.1
+    port: 5672
+    username: rbmq
+    password: 10101010
 logging:
   level:
     root: debug

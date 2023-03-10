@@ -8,3 +8,11 @@ docker run -d \
     mysql:8-debian --character-set-server=utf8mb4 --collation-server=utf8mb4_general_ci
 
 # -v "$PWD/data":/var/lib/mysql \
+
+docker run -d \
+    --rm \
+    --name some-rabbitmq \
+    -e RABBITMQ_DEFAULT_USER=rbmq \
+    -e RABBITMQ_DEFAULT_PASS=10101010 \
+    -p 5672:5672 \
+    rabbitmq:alpine
