@@ -10,7 +10,7 @@ import org.springframework.context.annotation.Bean;
 
 @SpringBootApplication
 public class CcsApplication {
-	private static Logger logger =  LogManager.getLogger(CcsApplication.class);
+	private static Logger logger =  LogManager.getLogger("ccs");
 	@Value("${server.port:80}")
 	private int port;
 

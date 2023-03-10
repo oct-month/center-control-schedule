@@ -2,9 +2,9 @@ set NAMES 'utf8mb4';
 
 -- USE ccs;
 
--- DROP TABLE IF EXISTS `Soft`;
 -- DROP TABLE IF EXISTS `DeviceReportLog`;
 -- DROP TABLE IF EXISTS `Device`;
+-- DROP TABLE IF EXISTS `Soft`;
 -- DROP TABLE IF EXISTS `ResourceTagRelate`;
 -- DROP TABLE IF EXISTS `CollectionTagRelate`;
 -- DROP TABLE IF EXISTS `ResourceCollectionRelate`;
@@ -33,13 +33,14 @@ COMMENT='固件';
 
 CREATE TABLE IF NOT EXISTS `Device` (
   `id` char(64) NOT NULL COMMENT 'id',
-  `softId` char(64) NOT NULL COMMENT '固件id',
-  `time` datetime NOT NULL COMMENT '汇报时间',
+  `softId` char(64) NULL COMMENT '固件id',
+  `uptime` datetime NOT NULL COMMENT '更新时间',
   `longitude` float NULL COMMENT '经度',
   `latitude` float NULL COMMENT '纬度',
   `clientCount` int NULL COMMENT '连接数',
   `speedCount` float NULL COMMENT '总带宽',
-  PRIMARY KEY (`id`)
+  PRIMARY KEY (`id`),
+  CONSTRAINT `D_FK` FOREIGN KEY (`softId`) REFERENCES `Soft` (`id`) ON DELETE SET NULL ON UPDATE CASCADE
 )
 ENGINE=InnoDB
 DEFAULT CHARSET=utf8mb4
@@ -49,14 +50,15 @@ COMMENT='边缘设备';
 CREATE TABLE IF NOT EXISTS `DeviceReportLog` (
   `id` int unsigned auto_increment NOT NULL COMMENT 'id',
   `deviceId` char(64) NOT NULL COMMENT '设备id',
-  `softId` char(64) NOT NULL COMMENT '固件id',
+  `softId` char(64) NULL COMMENT '固件id',
   `time` datetime NOT NULL COMMENT '汇报时间',
   `longitude` float NULL COMMENT '经度',
   `latitude` float NULL COMMENT '纬度',
   `clientCount` int NULL COMMENT '连接数',
   `speedCount` float NULL COMMENT '总带宽',
   PRIMARY KEY (`id`),
-  CONSTRAINT `DRL_FK` FOREIGN KEY (`deviceId`) REFERENCES `Device` (`id`) ON DELETE CASCADE ON UPDATE CASCADE
+  CONSTRAINT `DRL_FK_1` FOREIGN KEY (`deviceId`) REFERENCES `Device` (`id`) ON DELETE CASCADE ON UPDATE CASCADE,
+  CONSTRAINT `DRL_FK_2` FOREIGN KEY (`softId`) REFERENCES `Soft` (`id`) ON DELETE SET NULL ON UPDATE CASCADE
 )
 ENGINE=InnoDB
 DEFAULT CHARSET=utf8mb4

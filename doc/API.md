@@ -30,6 +30,8 @@
 ## 中心向边缘侧发布
 
 > 发布由中控发起，由边缘侧接收，发送目标为`RabbitMQ`一般队列。
+>
+> 这里的队列类型为：`Publish/Subscribe`
 
 ### 有新的固件
 
@@ -100,13 +102,14 @@
 | 状态码 | 含义 |
 | :----: | :---- |
 | 200 | `ok` 请求成功 |
+| 400 | `Bad Request` 请求参数错误 |
 | 401 | `unauthorized` deviceId字段缺失或不正确 |
 | 403 | `forbidden` 设备注册时邀请码不对 |
 | 502 | `bad gateway` 中心服务ban了 |
 
 ###	设备注册
 
-POST /api/v1/register
+POST /api/v1/device/register
 
 ```json
 {
