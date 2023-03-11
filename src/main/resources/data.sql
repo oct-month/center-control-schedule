@@ -30,10 +30,29 @@ INSERT INTO `Soft` VALUES (
 );
 UNLOCK TABLES;
 
+LOCK TABLES `User` WRITE;
+INSERT INTO `User` VALUES (
+    'ad',
+    'admin',
+    '9ccf3f3ac7e03b6f775bac6417a66952bc421d64c557d3c2ebd953f72a140eb7'
+);
+INSERT INTO `User` VALUES (
+    'user1',
+    'normal',
+    '9ccf3f3ac7e03b6f775bac6417a66952bc421d64c557d3c2ebd953f72a140eb7'
+);
+INSERT INTO `User` VALUES (
+    'user2',
+    'normal',
+    '9ecf3f3ac7e03b6f775bac6417a66952bc421d64c557d3c2ebd953f72a140eb7'
+);
+UNLOCK TABLES;
+
 LOCK TABLES `Device` WRITE;
 INSERT INTO `Device` VALUES (
     'fake-data-dd902ec7eb5fe8372d5329d8dcf64bddd3b683fb514b61eb2122a9',
     'fake-data-2ebbffbd002e9670e7ae9a707c1b5de75c0fd6e8d79d9d9f696982',
+    'user1',
     '2023-03-22 11:12:12',
     23.3,
     14.4,
@@ -43,6 +62,7 @@ INSERT INTO `Device` VALUES (
 INSERT INTO `Device` VALUES (
     'fake-data-ed902ec7eb5fe8372d5329d8dcf64bddd3b683fb514b61eb2122a9',
     'fake-data-1ebbffbd002e9670e7ae9a707c1b5de75c0fd6e8d79d9d9f696982',
+    'user1',
     '2023-03-20 11:12:12',
     23.3,
     14.4,
@@ -52,6 +72,7 @@ INSERT INTO `Device` VALUES (
 INSERT INTO `Device` VALUES (
     'fake-data-fd902ec7eb5fe8372d5329d8dcf64bddd3b683fb514b61eb2122a9',
     'fake-data-1ebbffbd002e9670e7ae9a707c1b5de75c0fd6e8d79d9d9f696982',
+    'user1',
     '2023-03-21 11:12:12',
     23.3,
     14.4,
@@ -224,24 +245,6 @@ INSERT INTO `ResourceThemeRelate` VALUES (
 INSERT INTO `ResourceThemeRelate` VALUES (
     'fake-data-c9d0d762c2255a1d00b45e4f00764d528203de6693efd6c0f2659d',
     'fake-data-e8e48d58e413fc5525ea7513eb4a91b77417a50e460a5c33f51c44'
-);
-UNLOCK TABLES;
-
-LOCK TABLES `User` WRITE;
-INSERT INTO `User` VALUES (
-    'ad',
-    'admin',
-    '9ccf3f3ac7e03b6f775bac6417a66952bc421d64c557d3c2ebd953f72a140eb7'
-);
-INSERT INTO `User` VALUES (
-    'user1',
-    'normal',
-    '9ccf3f3ac7e03b6f775bac6417a66952bc421d64c557d3c2ebd953f72a140eb7'
-);
-INSERT INTO `User` VALUES (
-    'user2',
-    'normal',
-    '9ecf3f3ac7e03b6f775bac6417a66952bc421d64c557d3c2ebd953f72a140eb7'
 );
 UNLOCK TABLES;
 

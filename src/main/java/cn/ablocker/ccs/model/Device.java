@@ -7,6 +7,7 @@ import javax.persistence.FetchType;
 import javax.persistence.ForeignKey;
 import javax.persistence.Id;
 import javax.persistence.JoinColumn;
+import javax.persistence.ManyToOne;
 import javax.persistence.OneToOne;
 import javax.persistence.Temporal;
 import javax.persistence.TemporalType;
@@ -28,7 +29,7 @@ public class Device {
 		name = "softId",
 		nullable = true,
 		referencedColumnName = "id",
-		foreignKey = @ForeignKey(name = "D_FK")
+		foreignKey = @ForeignKey(name = "D_FK_1")
 	)
 	private Soft soft;
 	
@@ -42,4 +43,13 @@ public class Device {
 	private int clientCount;
 	
 	private float speedCount;
+	
+	@ManyToOne(fetch = FetchType.LAZY)
+	@JoinColumn(
+		name = "userName",
+		nullable = true,
+		referencedColumnName = "name",
+		foreignKey = @ForeignKey(name = "D_FK_2")
+	)
+	private User user;
 }

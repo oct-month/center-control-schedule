@@ -33,16 +33,29 @@ DEFAULT CHARSET=utf8mb4
 COLLATE=utf8mb4_general_ci
 COMMENT='固件';
 
+CREATE TABLE IF NOT EXISTS `User` (
+  `name` varchar(64) NOT NULL COMMENT '用户名',
+  `role` varchar(40) NOT NULL COMMENT '角色/权限',
+  `passwd` char(64) NOT NULL COMMENT 'SHA256密码',
+  PRIMARY KEY (`name`)
+)
+ENGINE=InnoDB
+DEFAULT CHARSET=utf8mb4
+COLLATE=utf8mb4_general_ci
+COMMENT='边缘用户';
+
 CREATE TABLE IF NOT EXISTS `Device` (
   `id` char(64) NOT NULL COMMENT 'id',
   `softId` char(64) NULL COMMENT '固件id',
+  `userName` varchar(64) NULL COMMENT '所属用户',
   `uptime` datetime NOT NULL COMMENT '更新时间',
   `longitude` float NULL COMMENT '经度',
   `latitude` float NULL COMMENT '纬度',
   `clientCount` int NULL COMMENT '连接数',
   `speedCount` float NULL COMMENT '总带宽',
   PRIMARY KEY (`id`),
-  CONSTRAINT `D_FK` FOREIGN KEY (`softId`) REFERENCES `Soft` (`id`) ON DELETE SET NULL ON UPDATE CASCADE
+  CONSTRAINT `D_FK_1` FOREIGN KEY (`softId`) REFERENCES `Soft` (`id`) ON DELETE SET NULL ON UPDATE CASCADE,
+  CONSTRAINT `D_FK_2` FOREIGN KEY (`userName`) REFERENCES `User` (`name`) ON DELETE SET NULL ON UPDATE CASCADE
 )
 ENGINE=InnoDB
 DEFAULT CHARSET=utf8mb4
@@ -151,17 +164,6 @@ ENGINE=InnoDB
 DEFAULT CHARSET=utf8mb4
 COLLATE=utf8mb4_general_ci
 COMMENT='资源-主题 关系表';
-
-CREATE TABLE IF NOT EXISTS `User` (
-  `name` varchar(64) NOT NULL COMMENT '用户名',
-  `role` varchar(40) NOT NULL COMMENT '角色/权限',
-  `passwd` char(64) NOT NULL COMMENT 'SHA256密码',
-  PRIMARY KEY (`name`)
-)
-ENGINE=InnoDB
-DEFAULT CHARSET=utf8mb4
-COLLATE=utf8mb4_general_ci
-COMMENT='边缘用户';
 
 CREATE TABLE IF NOT EXISTS `UserResourceWhiteRelate` (
   `userName` varchar(64) NOT NULL,
