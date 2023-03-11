@@ -1,3 +1,5 @@
+#!/usr/bin/sh
+
 docker run -d \
     --rm \
     --name some-mysql \
@@ -11,7 +13,7 @@ docker run -d \
 
 docker run -d \
     --rm \
-    --name some-rabbitmq \
+    --name some-mq \
     -e RABBITMQ_DEFAULT_USER=rbmq \
     -e RABBITMQ_DEFAULT_PASS=10101010 \
     -p 5672:5672 \

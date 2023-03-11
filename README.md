@@ -21,12 +21,19 @@
 
 ## `Insomnia`可导入文件
 
-<a href="https://github.com/Kong/insomnia">
-  <span>Insomnia 官网</span>
-</a>
-
-<br/>
+[Insomnia 官网](https://github.com/Kong/insomnia)
 
 <a href="doc/Insomnia.json">
   <span>Insomnia 文件</span>
 </a>
+
+## 编译运行
+
+```sh
+mvn clean package -Dmaven.test.skip=true
+docker-compose up -d --build
+```
+
+[docker 官网](https://www.docker.com/)
+
+[docker-comopse 下载地址](https://github.com/docker/compose/releases)

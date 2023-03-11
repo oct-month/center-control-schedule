@@ -1,0 +1,43 @@
+networks:
+  default:
+    driver: bridge
+    external: false
+
+services:
+  ccs-mysql:
+    image: mysql:8-debian
+    container_name: ccs-mysql
+    restart: on-failure
+    command: --character-set-server=utf8mb4 --collation-server=utf8mb4_general_ci
+    # volumes:
+    #   - ./data":/var/lib/mysql
+    # ports:
+    #   - 3306:3306
+    environment:
+      - TZ=Asia/Shanghai
+      - MYSQL_DATABASE=ccs
+      - MYSQL_ROOT_PASSWORD=10101010
+  
+  ccs-mq:
+    image: rabbitmq:alpine
+    container_name: ccs-mq
+    restart: on-failure
+    # ports:
+    #   - 5672:5672
+    environment:
+      - RABBITMQ_DEFAULT_USER=rbmq
+      - RABBITMQ_DEFAULT_PASS=10101010
+  
+  ccs-core:
+    build: ./
+    image: ablocker/ccs-core:latest
+    container_name: ccs-core
+    restart: on-failure
+    ports:
+      - 8080:8080
+    environment:
+      - MYSQL_HOST=ccs-mysql
+      - MQ_HOST=ccs-mq
+    depends_on:
+      - ccs-mysql
+      - ccs-mq

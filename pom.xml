@@ -10,7 +10,7 @@
 	</parent>
 	<groupId>cn.ablocker</groupId>
 	<artifactId>ccs</artifactId>
-	<version>0.0.1-SNAPSHOT</version>
+	<version>1.0.0-SNAPSHOT</version>
 	<name>ccs</name>
 	<description>Center Control Schedule Project</description>
 	<properties>
@@ -43,6 +43,10 @@
 		<dependency>
           <groupId>commons-codec</groupId>
           <artifactId>commons-codec</artifactId>
+        </dependency>
+        <dependency>
+            <groupId>com.fasterxml.jackson.datatype</groupId>
+            <artifactId>jackson-datatype-hibernate5</artifactId>
         </dependency>
 
 		<dependency>

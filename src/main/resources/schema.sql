@@ -3,20 +3,20 @@ set NAMES 'utf8mb4';
 -- USE ccs;
 -- UNLOCK TABLES;
 
--- DROP TABLE IF EXISTS `DeviceReportLog`;
--- DROP TABLE IF EXISTS `Device`;
--- DROP TABLE IF EXISTS `Soft`;
--- DROP TABLE IF EXISTS `ResourceTagRelate`;
--- DROP TABLE IF EXISTS `CollectionTagRelate`;
--- DROP TABLE IF EXISTS `ResourceCollectionRelate`;
--- DROP TABLE IF EXISTS `ResourceThemeRelate`;
--- DROP TABLE IF EXISTS `UserResourceWhiteRelate`;
--- DROP TABLE IF EXISTS `UserResourceBlackRelate`;
--- DROP TABLE IF EXISTS `UserCollectionRelate`;
--- DROP TABLE IF EXISTS `Resource`;
--- DROP TABLE IF EXISTS `Collection`;
--- DROP TABLE IF EXISTS `Theme`;
--- DROP TABLE IF EXISTS `User`;
+DROP TABLE IF EXISTS `DeviceReportLog`;
+DROP TABLE IF EXISTS `Device`;
+DROP TABLE IF EXISTS `Soft`;
+DROP TABLE IF EXISTS `ResourceTagRelate`;
+DROP TABLE IF EXISTS `CollectionTagRelate`;
+DROP TABLE IF EXISTS `ResourceCollectionRelate`;
+DROP TABLE IF EXISTS `ResourceThemeRelate`;
+DROP TABLE IF EXISTS `UserResourceWhiteRelate`;
+DROP TABLE IF EXISTS `UserResourceBlackRelate`;
+DROP TABLE IF EXISTS `UserCollectionRelate`;
+DROP TABLE IF EXISTS `Resource`;
+DROP TABLE IF EXISTS `Collection`;
+DROP TABLE IF EXISTS `Theme`;
+DROP TABLE IF EXISTS `User`;
 
 CREATE TABLE IF NOT EXISTS `Soft` (
   `id` char(64) NOT NULL COMMENT 'id',
