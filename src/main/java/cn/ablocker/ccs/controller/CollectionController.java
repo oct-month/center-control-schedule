@@ -11,6 +11,7 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 import org.springframework.web.server.ResponseStatusException;
 
+import cn.ablocker.ccs.aspect.BasicAuth;
 import cn.ablocker.ccs.dao.CollectionDao;
 import cn.ablocker.ccs.model.Collection;
 
@@ -20,11 +21,13 @@ public class CollectionController {
 	@Autowired
 	private CollectionDao dao;
 	
+	@BasicAuth
 	@GetMapping(value = "/", produces = "application/json")
 	public List<Collection> getResources() {
 		return dao.findAll();
 	}
 	
+	@BasicAuth
 	@GetMapping(value = "/{collectionId}", produces = "application/json")
 	public Collection getResource(@PathVariable String collectionId) {
 		Optional<Collection> rs = dao.findById(collectionId);

@@ -6,7 +6,7 @@ INSERT INTO `Soft` VALUES (
     'v1.0.3',
     2,
     '2023-03-22 11:12:12',
-    '博物馆-边缘-客户端',
+    'museum-edge-client',
     'v1.0.3版本,修复了若干bug,增加了播放功能',
     '/api/v1/file/soft/test-bin-2.tar.gz'
 );
@@ -15,7 +15,7 @@ INSERT INTO `Soft` VALUES (
     'v1.0.4',
     3,
     '2023-03-20 11:12:12',
-    '博物馆-边缘-客户端',
+    'museum-edge-client',
     'v1.0.4版本,修复了若干bug,增加了播放功能',
     '/api/v1/file/soft/test-bin-3.tar.gz'
 );
@@ -24,7 +24,7 @@ INSERT INTO `Soft` VALUES (
     'v1.0.1',
     1,
     '2023-03-21 11:12:12',
-    '博物馆-边缘-客户端',
+    'museum-edge-client',
     'v1.0.1版本,修复了若干bug,增加了播放功能',
     '/api/v1/file/soft/test-bin-1.tar.gz'
 );

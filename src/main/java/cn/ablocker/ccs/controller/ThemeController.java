@@ -11,6 +11,7 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 import org.springframework.web.server.ResponseStatusException;
 
+import cn.ablocker.ccs.aspect.BasicAuth;
 import cn.ablocker.ccs.dao.ThemeDao;
 import cn.ablocker.ccs.model.Theme;
 
@@ -20,11 +21,13 @@ public class ThemeController {
 	@Autowired
 	private ThemeDao dao;
 	
+	@BasicAuth
 	@GetMapping(value = "/", produces = "application/json")
 	public List<Theme> getResources() {
 		return dao.findAll();
 	}
 	
+	@BasicAuth
 	@GetMapping(value = "/{themeId}", produces = "application/json")
 	public Theme getResource(@PathVariable String themeId) {
 		Optional<Theme> rs = dao.findById(themeId);

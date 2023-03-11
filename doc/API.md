@@ -103,7 +103,7 @@
 | :----: | :---- |
 | 200 | `ok` 请求成功 |
 | 400 | `Bad Request` 请求参数错误 |
-| 401 | `unauthorized` deviceId字段缺失或不正确 |
+| 401 | `unauthorized` Authorization: deviceId 头缺失或不正确 |
 | 403 | `forbidden` 设备注册时用户名密码不对 |
 | 404 | `Not Found` 请求的资源或页面不存在 |
 | 502 | `bad gateway` 中心服务ban了 |
@@ -124,6 +124,8 @@ POST /api/v1/device/register
 ```
 
 > 用户由中心控制修改，用户下属的设备继承用户对资源的访问权限
+>
+> `password`字段不一定是用户的真实密码，也可能是用户设置的专用于设备注册的密码
 > 
 > 其余字段可选
 
@@ -147,7 +149,7 @@ POST /api/v1/device/register
 
 ```json
 {
-	"msg": "code wrong"
+	"msg": "username or password wrong"
 }
 ```
 

@@ -11,6 +11,7 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 import org.springframework.web.server.ResponseStatusException;
 
+import cn.ablocker.ccs.aspect.BasicAuth;
 import cn.ablocker.ccs.dao.ResourceDao;
 import cn.ablocker.ccs.model.Resource;
 
@@ -20,11 +21,13 @@ public class ResourceController {
 	@Autowired
 	private ResourceDao dao;
 	
+	@BasicAuth
 	@GetMapping(value = "/", produces = "application/json")
 	public List<Resource> getResources() {
 		return dao.findAll();
 	}
 	
+	@BasicAuth
 	@GetMapping(value = "/{resourceId}", produces = "application/json")
 	public Resource getResource(@PathVariable String resourceId) {
 		Optional<Resource> rs = dao.findById(resourceId);

@@ -10,6 +10,7 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 import org.springframework.web.server.ResponseStatusException;
 
+import cn.ablocker.ccs.aspect.BasicAuth;
 import cn.ablocker.ccs.dao.SoftDao;
 import cn.ablocker.ccs.model.Soft;
 
@@ -19,9 +20,10 @@ public class SceneController {
 	@Autowired
 	private SoftDao dao;
 	
+	@BasicAuth
 	@GetMapping(value = "/{scene}/latest", produces = "application/json")
 	public Soft getLatestSoft(@PathVariable String scene) {
-		Optional<Soft> rs = dao.findOneBySceneOrderByVersionCodeDesc(scene);
+		Optional<Soft> rs = dao.findTop1BySceneOrderByVersionCodeDesc(scene);
 		if (rs.isPresent()) {
 			return rs.get();
 		}
