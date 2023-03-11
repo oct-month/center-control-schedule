@@ -105,6 +105,7 @@
 | 400 | `Bad Request` 请求参数错误 |
 | 401 | `unauthorized` deviceId字段缺失或不正确 |
 | 403 | `forbidden` 设备注册时邀请码不对 |
+| 404 | `Not Found` 请求的资源或页面不存在 |
 | 502 | `bad gateway` 中心服务ban了 |
 
 ###	设备注册
@@ -149,7 +150,7 @@ POST /api/v1/device/register
 
 ###	资源列表获取
 
-GET /api/v1/resource
+GET /api/v1/resource/
 
 ```json
 [
@@ -161,13 +162,13 @@ GET /api/v1/resource
         "desc": "<资源详细描述>",
         "uptime": "<float:上一次更新时间UTC>",
         "file": "<资源下载链接:/api/v1/file/video/test.mp4>",
-        "tag": ["标签1", "标签2"]
+        "tags": ["标签1", "标签2"]
     },
     ...
 ]
 ```
 
-GET /api/v1/resource/<resourceId>
+GET /api/v1/resource/\<resourceId\>
 
 ```json
 {
@@ -178,13 +179,13 @@ GET /api/v1/resource/<resourceId>
     "desc": "<资源详细描述>",
     "uptime": "<float:上一次更新时间UTC>",
     "file": "<资源下载链接:/api/v1/file/video/test.mp4>",
-    "tag": ["标签1", "标签2"]
+    "tags": ["标签1", "标签2"]
 }
 ```
 
 ###	合集列表获取
 
-GET /api/v1/collection
+GET /api/v1/collection/
 
 ```json
 [
@@ -192,28 +193,28 @@ GET /api/v1/collection
         "id": "<collectionId>",
         "name": "<合集名称>",
         "cover": "合集封面:/api/v1/file/cover/test.png",
-        "tag": ["标签1", "标签2"],
-        "resource": ["资源1", "资源2"]
+        "tags": ["标签1", "标签2"],
+        "resources": ["资源1", "资源2"]
     },
     ...
 ]
 ```
 
-GET /api/v1/collection/<collectionId>
+GET /api/v1/collection/\<collectionId\>
 
 ```json
 {
     "id": "<collectionId>",
     "name": "<合集名称>",
     "cover": "合集封面:/api/v1/file/cover/test.png",
-    "tag": ["标签1", "标签2"],
-    "resource": ["资源1", "资源2"]
+    "tags": ["标签1", "标签2"],
+    "resources": ["资源1", "资源2"]
 }
 ```
 
 ###	主题列表获取
 
-GET /api/v1/theme
+GET /api/v1/theme/
 
 ```json
 [
@@ -221,37 +222,37 @@ GET /api/v1/theme
         "id": "<themeId>",
         "name": "<主题名称>",
         "endTime": "<float:结束时间UTC>",
-        "resource": ["资源1", "资源2"]
+        "resources": ["资源1", "资源2"]
     },
     ...
 ]
 ```
 
-GET /api/v1/theme/<themeId>
+GET /api/v1/theme/\<themeId\>
 
 ```json
 {
     "id": "<themeId>",
     "name": "<主题名称>",
     "endTime": "<float:结束时间UTC>",
-    "resource": ["资源1", "资源2"]
+    "resources": ["资源1", "资源2"]
 }
 ```
 
 ###	特定资源下载
 
-GET /api/v1/file/cover/<test.jpg>
+GET /api/v1/file/cover/\<test.jpg\>
 
 二进制图片
 
-GET /api/v1/file/video/<test.mp4>
+GET /api/v1/file/video/\<test.mp4\>
 
 二进制视频
 
 
 ###	固件最新版本查询
 
-GET /api/v1/soft/<scene>
+GET /api/v1/scene/\<scene\>/latest
 
 ```json
 {
@@ -267,6 +268,21 @@ GET /api/v1/soft/<scene>
 
 ### 固件下载
 
-GET /api/v1/file/soft/<文件名>
+GET /api/v1/file/soft/\<文件名\>
 
 二进制升级包
+
+
+### 其他固件 `API`
+
+> 仅由调度中心使用，不由边缘侧调用
+
+GET /api/v1/soft/                   所有固件
+
+GET /api/v1/soft/\<softId\>         特定固件
+
+GET /api/v1/scene/                  所有场景
+
+GET /api/v1/scene/\<scene\>         特定场景的所有固件
+
+GET /api/v1/scene/\<scene\>/latest  特定场景的最新固件

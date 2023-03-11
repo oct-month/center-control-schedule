@@ -11,6 +11,8 @@ import javax.persistence.OneToMany;
 import javax.persistence.Temporal;
 import javax.persistence.TemporalType;
 
+import com.fasterxml.jackson.annotation.JsonIgnore;
+
 import lombok.AllArgsConstructor;
 import lombok.Data;
 import lombok.NoArgsConstructor;
@@ -39,15 +41,19 @@ public class Resource {
 	@OneToMany(mappedBy = "resource", fetch = FetchType.LAZY)
 	private List<ResourceTagRelate> tags;
 	
+	@JsonIgnore
 	@ManyToMany(mappedBy = "resources", fetch = FetchType.LAZY)
 	private List<Collection> collections;
 	
+	@JsonIgnore
 	@ManyToMany(mappedBy = "resources", fetch = FetchType.LAZY)
 	private List<Theme> themes;
 	
+	@JsonIgnore
 	@ManyToMany(mappedBy = "whiteResources", fetch = FetchType.LAZY)
 	private List<User> allowUsers;
 	
+	@JsonIgnore
 	@ManyToMany(mappedBy = "blackResources", fetch = FetchType.LAZY)
 	private List<User> denyUsers;
 }

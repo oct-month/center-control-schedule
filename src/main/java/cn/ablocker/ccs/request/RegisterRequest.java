@@ -8,9 +8,14 @@ import lombok.NoArgsConstructor;
 @NoArgsConstructor
 @AllArgsConstructor
 public class RegisterRequest {
+	
 	private String code;
+	
 	private float longitude;
+	
 	private float latitude;
+	
 	private String soft;
+	
 	private String status;
 }
