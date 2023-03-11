@@ -104,7 +104,7 @@
 | 200 | `ok` 请求成功 |
 | 400 | `Bad Request` 请求参数错误 |
 | 401 | `unauthorized` deviceId字段缺失或不正确 |
-| 403 | `forbidden` 设备注册时邀请码不对 |
+| 403 | `forbidden` 设备注册时用户名密码不对 |
 | 404 | `Not Found` 请求的资源或页面不存在 |
 | 502 | `bad gateway` 中心服务ban了 |
 
@@ -114,7 +114,8 @@ POST /api/v1/device/register
 
 ```json
 {
-    "code": "<邀请码>",
+    "username": "<所属用户名>",
+    "password": "<所属用户的密码>",
     "longitude": "<经度>",
     "latitude": "<纬度>",
     "soft": "<softId>",
@@ -122,7 +123,7 @@ POST /api/v1/device/register
 }
 ```
 
-> code邀请码为中心设置
+> 用户由中心控制修改，用户下属的设备继承用户对资源的访问权限
 > 
 > 其余字段可选
 
@@ -137,6 +138,10 @@ POST /api/v1/device/register
 ```
 
 > deviceId同时作为登录凭证
+>
+> 需要添加到`HTTP`头`Authorization`中
+>
+> 如：`Authorization: deviceId fake-data-dd902ec7eb5fe8372d5329d8dcf64bddd3b683fb514b61eb2122a9`
 
 403
 
@@ -146,7 +151,7 @@ POST /api/v1/device/register
 }
 ```
 
-> 邀请码错误
+> 用户名或密码错误
 
 ###	资源列表获取
 

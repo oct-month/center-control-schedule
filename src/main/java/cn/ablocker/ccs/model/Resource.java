@@ -1,6 +1,5 @@
 package cn.ablocker.ccs.model;
 
-import java.util.ArrayList;
 import java.util.Date;
 import java.util.List;
 
@@ -40,21 +39,21 @@ public class Resource {
 	private String file;
 	
 	@OneToMany(mappedBy = "resource", fetch = FetchType.LAZY)
-	private List<ResourceTagRelate> tags = new ArrayList<>();
+	private List<ResourceTagRelate> tags;
 	
 	@JsonIgnore
 	@ManyToMany(mappedBy = "resources", fetch = FetchType.LAZY)
-	private List<Collection> collections = new ArrayList<>();;
+	private List<Collection> collections;
 	
 	@JsonIgnore
 	@ManyToMany(mappedBy = "resources", fetch = FetchType.LAZY)
-	private List<Theme> themes = new ArrayList<>();;
+	private List<Theme> themes;
 	
 	@JsonIgnore
 	@ManyToMany(mappedBy = "whiteResources", fetch = FetchType.LAZY)
-	private List<User> allowUsers = new ArrayList<>();;
+	private List<User> allowUsers;
 	
 	@JsonIgnore
 	@ManyToMany(mappedBy = "blackResources", fetch = FetchType.LAZY)
-	private List<User> denyUsers = new ArrayList<>();;
+	private List<User> denyUsers;
 }
