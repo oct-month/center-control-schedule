@@ -1,6 +1,7 @@
 set NAMES 'utf8mb4';
 
 -- USE ccs;
+-- UNLOCK TABLES;
 
 -- DROP TABLE IF EXISTS `DeviceReportLog`;
 -- DROP TABLE IF EXISTS `Device`;

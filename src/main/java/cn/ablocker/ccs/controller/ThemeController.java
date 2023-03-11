@@ -11,23 +11,23 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 import org.springframework.web.server.ResponseStatusException;
 
-import cn.ablocker.ccs.dao.SoftDao;
-import cn.ablocker.ccs.model.Soft;
+import cn.ablocker.ccs.dao.ThemeDao;
+import cn.ablocker.ccs.model.Theme;
 
 @RestController
-@RequestMapping("/api/v1/soft")
-public class SoftController {
+@RequestMapping("/api/v1/theme")
+public class ThemeController {
 	@Autowired
-	private SoftDao dao;
+	private ThemeDao dao;
 	
 	@GetMapping(value = "/", produces = "application/json")
-	public List<Soft> getResources() {
+	public List<Theme> getResources() {
 		return dao.findAll();
 	}
 	
-	@GetMapping(value = "/{softId}", produces = "application/json")
-	public Soft getResource(@PathVariable String softId) {
-		Optional<Soft> rs = dao.findById(softId);
+	@GetMapping(value = "/{themeId}", produces = "application/json")
+	public Theme getResource(@PathVariable String themeId) {
+		Optional<Theme> rs = dao.findById(themeId);
 		if (rs.isPresent()) {
 			return rs.get();
 		}

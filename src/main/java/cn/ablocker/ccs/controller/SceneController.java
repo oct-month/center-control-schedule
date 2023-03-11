@@ -1,6 +1,5 @@
 package cn.ablocker.ccs.controller;
 
-import java.util.List;
 import java.util.Optional;
 
 import org.springframework.beans.factory.annotation.Autowired;
@@ -15,19 +14,14 @@ import cn.ablocker.ccs.dao.SoftDao;
 import cn.ablocker.ccs.model.Soft;
 
 @RestController
-@RequestMapping("/api/v1/soft")
-public class SoftController {
+@RequestMapping("/api/v1/scene")
+public class SceneController {
 	@Autowired
 	private SoftDao dao;
 	
-	@GetMapping(value = "/", produces = "application/json")
-	public List<Soft> getResources() {
-		return dao.findAll();
-	}
-	
-	@GetMapping(value = "/{softId}", produces = "application/json")
-	public Soft getResource(@PathVariable String softId) {
-		Optional<Soft> rs = dao.findById(softId);
+	@GetMapping(value = "/{scene}/latest", produces = "application/json")
+	public Soft getLatestSoft(@PathVariable String scene) {
+		Optional<Soft> rs = dao.findOneBySceneOrderByVersionCodeDesc(scene);
 		if (rs.isPresent()) {
 			return rs.get();
 		}

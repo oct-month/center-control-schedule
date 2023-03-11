@@ -11,23 +11,23 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 import org.springframework.web.server.ResponseStatusException;
 
-import cn.ablocker.ccs.dao.SoftDao;
-import cn.ablocker.ccs.model.Soft;
+import cn.ablocker.ccs.dao.CollectionDao;
+import cn.ablocker.ccs.model.Collection;
 
 @RestController
-@RequestMapping("/api/v1/soft")
-public class SoftController {
+@RequestMapping("/api/v1/collection")
+public class CollectionController {
 	@Autowired
-	private SoftDao dao;
+	private CollectionDao dao;
 	
 	@GetMapping(value = "/", produces = "application/json")
-	public List<Soft> getResources() {
+	public List<Collection> getResources() {
 		return dao.findAll();
 	}
 	
-	@GetMapping(value = "/{softId}", produces = "application/json")
-	public Soft getResource(@PathVariable String softId) {
-		Optional<Soft> rs = dao.findById(softId);
+	@GetMapping(value = "/{collectionId}", produces = "application/json")
+	public Collection getResource(@PathVariable String collectionId) {
+		Optional<Collection> rs = dao.findById(collectionId);
 		if (rs.isPresent()) {
 			return rs.get();
 		}

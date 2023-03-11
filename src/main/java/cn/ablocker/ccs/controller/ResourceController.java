@@ -4,11 +4,12 @@ import java.util.List;
 import java.util.Optional;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.http.HttpStatus;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.RestController;
+import org.springframework.web.server.ResponseStatusException;
 
 import cn.ablocker.ccs.dao.ResourceDao;
 import cn.ablocker.ccs.model.Resource;
@@ -30,6 +31,6 @@ public class ResourceController {
 		if (rs.isPresent()) {
 			return rs.get();
 		}
-		return null;
+		throw new ResponseStatusException(HttpStatus.NOT_FOUND);
 	}
 }

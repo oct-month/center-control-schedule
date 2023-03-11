@@ -8,11 +8,18 @@ import javax.persistence.ForeignKey;
 import javax.persistence.JoinColumn;
 import javax.persistence.ManyToOne;
 
+import com.fasterxml.jackson.databind.annotation.JsonDeserialize;
+import com.fasterxml.jackson.databind.annotation.JsonSerialize;
+
+import cn.ablocker.ccs.serializer.ResourceTagDeserializer;
+import cn.ablocker.ccs.serializer.ResourceTagSerializer;
 import lombok.AllArgsConstructor;
 import lombok.Data;
 import lombok.NoArgsConstructor;
 
 @Entity
+@JsonSerialize(using = ResourceTagSerializer.class)
+@JsonDeserialize(using = ResourceTagDeserializer.class)
 @Data
 @NoArgsConstructor
 @AllArgsConstructor
