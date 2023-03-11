@@ -21,9 +21,11 @@
 
 ## `Insomnia`可导入文件
 
-<a href="[doc/Insomnia.json](https://github.com/Kong/insomnia)">
+<a href="https://github.com/Kong/insomnia">
   <span>Insomnia 官网</span>
 </a>
+
+<br/>
 
 <a href="doc/Insomnia.json">
   <span>Insomnia 文件</span>
